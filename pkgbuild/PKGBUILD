@@ -14,7 +14,6 @@ depends=(
 )
 optdepends=(
   gnome-extra
-  tweaks
   capitaine-cursors
   beauty-icon-theme
   # Xorg
