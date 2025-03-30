@@ -55,6 +55,7 @@ optdepends=(
   lightdm-settings
   lightdm-gtk-greeter     # Interface gráfica para LightDM
   sddm                    # Gerenciador de login moderno, compatível com Wayland
+  gdm                     # Display manager and login screen
   # Extras para Wayland
   #waybar                   # Barra de status alternativa para Wayland
   firefox                  # Navegador web popular e de código aberto, focado na privacidade e segurança.
@@ -142,6 +143,29 @@ optdepends=(
   xf86-video-voodoo       # X.org 3dfx Voodoo1/Voodoo2 2D video driver
   lib32-libxxf86vm        # X11 XFree86 video mode extension library (32-bit)
   xf86-video-sis          # X.org SiS video driver
+  #Packages-Live
+  gparted                 # A Partition Magic clone, frontend to GNU Parted
+  nbd                     # tools for network block devices, allowing you to use remote block devices over TCP/IP
+  mkinitcpio-nfs-utils
+  biglinux-grub-restore
+  memtest86+
+  memtest86+-efi
+  #Packages-Desktop
+  noto-fonts-emoji
+  ttf-droid
+  ttf-inconsolata
+  ttf-indic-otf
+  ttf-liberation
+  adobe-source-han-sans-cn-fonts
+  adobe-source-han-sans-jp-fonts
+  adobe-source-han-sans-kr-fonts
+  adobe-source-sans-pro-fonts
+  cantarell-fonts
+  noto-fonts-lite
+  noto-nerd-fonts-lite
+  ttf-roboto
+  ttf-roboto-mono
+  ttf-roboto-slab
 )
 
 # Automatically detect and use the correct install file

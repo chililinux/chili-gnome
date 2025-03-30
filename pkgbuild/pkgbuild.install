@@ -18,11 +18,11 @@ export white="\033[1;37m"
 export bold="\033[1m"
 export reset="\033[0m"
 declare IS_UPGRADE=false
-declare DM='lightdm'
+declare DM='gdm'
 declare WM='gnome'
 declare pkgname=chili-"${WM}"
-declare servicesToEnable=(${DM} avahi-daemon sshd cups bluetooth)
-declare servicesToDisable=(lxdm sddm gdm)
+declare servicesToEnable=(${DM} sshd cronie ModemManager NetworkManager cups fstrim.timer pkgfile-update-timer vboxservice ufw avahi-daemon smb cups-browsed)
+declare servicesToDisable=(lightdm lxdm sddm gdm)
 
 msg() {
 	local msg="$1"
