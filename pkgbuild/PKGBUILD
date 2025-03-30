@@ -49,12 +49,12 @@ optdepends=(
   pipewire-alsa            # Low-latency audio/video router and processor - ALSA configuration
   pipewire-jack            # Low-latency audio/video router and processor - JACK replacement
   # Interface gráfica e login
-  #lxdm                     # Gerenciador de login leve e rápido, usado principalmente no LXDE.
+  lxdm                      # Gerenciador de login leve e rápido, usado principalmente no LXDE.
   lightdm                   # Gerenciador de login leve
   lightdm-slick-greeter
   lightdm-settings
   lightdm-gtk-greeter     # Interface gráfica para LightDM
-  #sddm                   # Gerenciador de login moderno, compatível com Wayland
+  sddm                    # Gerenciador de login moderno, compatível com Wayland
   # Extras para Wayland
   #waybar                   # Barra de status alternativa para Wayland
   firefox                  # Navegador web popular e de código aberto, focado na privacidade e segurança.
