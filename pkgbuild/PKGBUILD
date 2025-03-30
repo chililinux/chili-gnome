@@ -40,6 +40,8 @@ optdepends=(
   geoclue                  # Serviço de geolocalização
   # Extras para integração e personalização
   packagekit               # Integração com gerenciadores de pacotes
+  networkmanager
+  modemmanager             # Mobile broadband modem management service
   network-manager-applet   # Ícone de gerenciamento de rede
   # Áudio
   pavucontrol              # Controle de volume para PulseAudio
@@ -61,15 +63,17 @@ optdepends=(
   firefox                  # Navegador web popular e de código aberto, focado na privacidade e segurança.
   #brave-browser            # Navegador baseado no Chromium, focado na privacidade, bloqueio de anúncios e velocidade.
   # Pacotes da comunidade
-  chili-base-config
   auto-tweaks-browser      # Aplica ajustes automáticos ao navegador para otimizar seu desempenho e funcionalidade.
   big-store                # Gerenciador de grandes volumes de dados.
   bigcontrolcenter-base    # Base para o Big Control Center, interface de gerenciamento do sistema.
+  chili-base-config
   chili-webapps            # Integra aplicativos web ao ambiente de desktop.
   chili-restore-config     # Restaura configurações padrão de aplicativos de comunicação.
   chili-utils
-  #chili-iso2usb
-  #chili-clonedisk
+  chili-clonedisk
+  chili-iso2usb
+  chili-install
+  chili-nano-config
   bigbashview              # BigBashView is a python app to run Bash+HTML in a Desktop WebView
   timeshift                # Ferramenta para criar snapshots incrementais do sistema.
   grub-btrfs-timeshift     # Integra o Timeshift ao GRUB em sistemas Btrfs.
@@ -84,7 +88,6 @@ optdepends=(
   paru                     # AUR helper para instalação de pacotes do Arch User Repository.
   #nautilus                 # Gerenciador de arquivos do GNOME.
   ecrire                   # Processador de texto leve.
-  evisum                   # Ferramenta para visualização e análise de dados científicos.
   gnome-disk-utility       # Utilitário gráfico para gerenciar discos e dispositivos de armazenamento.
   # GVFS - Sistema de arquivos virtual
   gvfs                      # Implementação do sistema de arquivos virtual para GIO
@@ -101,7 +104,6 @@ optdepends=(
   conky                     # Light-weight system monitor for X, Wayland, and other things, too
   conky-manager2            # GUI for managing Conky config files with options to browse and edit themes
   plank                     # Elegant, simple, clean dock
-  brisk-menu                # Modern, efficient menu for the MATE Desktop Environment
   # Office
   libreoffice-fresh-pt-br # Portuguese (Brasil) language pack for LibreOffice Fresh
   eog                     # Eye of Gnome: An image viewing and cataloging program
@@ -175,52 +177,28 @@ elif [ -e "pkgbuild.install" ]; then
 	install=pkgbuild.install
 fi
 
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	# Add any preparation steps here, if needed
-	# For example: patch -p1 < "${srcdir}/patch-file.patch"
-}
-
-build() {
-	cd "${srcdir}/${pkgname}"
-	# Add build steps here, if needed
-	# For example: make
-}
-
-check() {
-	cd "${srcdir}/${pkgname}"
-	# Add check/test steps here, if needed
-	# For example: make check
-}
-
 package() {
-	cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
-	mkdir -p "${pkgdir}/usr/share/${pkgname}"
-	printf "%s\n" "${optdepends[@]}" >"${pkgdir}/usr/share/${pkgname}/optdepends"
+  # Instale todos os arquivos em /usr/share/${pkgname} no momento da criação do pacote:
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  printf "%s\n" "${optdepends[@]}" >"${pkgdir}/usr/share/${pkgname}/optdepends"
 
-	# Determine the correct source directory
-	if [ -d "${pkgname}" ]; then
-		srcdir="${srcdir}/${pkgname}/${pkgname}"
-	else
-		srcdir="${srcdir}/${pkgname}"
-	fi
+  # Copiar a estrutura de /etc, /usr e /opt para /usr/share/${pkgname}
+  local dirs=("usr" "etc" "opt")
+  for dir in "${dirs[@]}"; do
+    if [ -d "${srcdir}/${pkgname}/${dir}" ]; then
+      cp -a "${srcdir}/${pkgname}/${dir}" "${pkgdir}/usr/share/${pkgname}/"
+    fi
+  done
 
-	# Install files
-	local dirs=("usr" "etc" "opt")
-	for dir in "${dirs[@]}"; do
-		if [ -d "${srcdir}/${dir}" ]; then
-			cp -a "${srcdir}/${dir}" "${pkgdir}/"
-		fi
-	done
+  # Install license file if present
+  if [ -f "LICENSE" ]; then
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 
-	# Install license file if present
-	if [ -f "LICENSE" ]; then
-		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	fi
-
-	# Install documentation if present
-	if [ -f "README.md" ]; then
-		install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	fi
+  # Install documentation if present
+  if [ -f "README.md" ]; then
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  fi
 }
