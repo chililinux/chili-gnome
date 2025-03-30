@@ -10,163 +10,404 @@ url="https://github.com/chililinux/${pkgname}"
 source=("git+${url}.git")
 md5sums=('SKIP')
 depends=(
-  gnome-shell
+	gnome-shell
 )
 optdepends=(
-  gnome-extra
-  capitaine-cursors
-  beauty-icon-theme
-  # Xorg
-  xorg-server              # Servidor X11
-  xorg-xinit               # Inicialização do Xorg
-  xorg-xrandr              # Configuração de resolução e monitores
-  xorg-xsetroot            # Permite definir o papel de parede no Xorg
-  xorg-xrdb                # Banco de dados de recursos do X
-  # Wayland
-  wlroots                  # Biblioteca para composição no Wayland
-  xorg-xwayland            # Suporte para aplicativos X11 no Wayland
-  wayland                  # Protocolo Wayland
-  wayland-utils            # Ferramentas para Wayland
-  wlr-randr                # Alternativa ao xrandr para Wayland
-  # Aplicativos essenciais
-  xfce4-terminal           # Terminal alternativo baseado no XFCE
-  xterm                    # Terminal padrão do Xorg
-  # Gerenciamento de hardware e energia
-  acpid                    # Gerenciamento de eventos de energia
-  bluez                    # Suporte a Bluetooth
-  blueman                  # Gerenciador de Bluetooth
-  fprintd                  # Suporte a leitores de impressão digital
-  geoclue                  # Serviço de geolocalização
-  # Extras para integração e personalização
-  packagekit               # Integração com gerenciadores de pacotes
-  networkmanager
-  modemmanager             # Mobile broadband modem management service
-  network-manager-applet   # Ícone de gerenciamento de rede
-  # Áudio
-  pavucontrol              # Controle de volume para PulseAudio
-  pipewire                 # Alternativa moderna ao PulseAudio para áudio
-  wireplumber              # Gerenciador de sessão para PipeWire
-  pipewire-pulse           # Low-latency audio/video router and processor - PulseAudio replacement
-  pipewire-alsa            # Low-latency audio/video router and processor - ALSA configuration
-  pipewire-jack            # Low-latency audio/video router and processor - JACK replacement
-  # Interface gráfica e login
-  lxdm                      # Gerenciador de login leve e rápido, usado principalmente no LXDE.
-  lightdm                   # Gerenciador de login leve
-  lightdm-slick-greeter
-  lightdm-settings
-  lightdm-gtk-greeter     # Interface gráfica para LightDM
-  sddm                    # Gerenciador de login moderno, compatível com Wayland
-  gdm                     # Display manager and login screen
-  # Extras para Wayland
-  #waybar                   # Barra de status alternativa para Wayland
-  firefox                  # Navegador web popular e de código aberto, focado na privacidade e segurança.
-  #brave-browser            # Navegador baseado no Chromium, focado na privacidade, bloqueio de anúncios e velocidade.
-  # Pacotes da comunidade
-  auto-tweaks-browser      # Aplica ajustes automáticos ao navegador para otimizar seu desempenho e funcionalidade.
-  big-store                # Gerenciador de grandes volumes de dados.
-  bigcontrolcenter-base    # Base para o Big Control Center, interface de gerenciamento do sistema.
-  chili-base-config
-  chili-webapps            # Integra aplicativos web ao ambiente de desktop.
-  chili-restore-config     # Restaura configurações padrão de aplicativos de comunicação.
-  chili-utils
-  chili-clonedisk
-  chili-iso2usb
-  chili-install
-  chili-nano-config
-  bigbashview              # BigBashView is a python app to run Bash+HTML in a Desktop WebView
-  timeshift                # Ferramenta para criar snapshots incrementais do sistema.
-  grub-btrfs-timeshift     # Integra o Timeshift ao GRUB em sistemas Btrfs.
-  grub-btrfs               # Permite que o GRUB reconheça snapshots do Btrfs.
-  cups                     # Sistema de impressão comum no Linux.
-  system-config-printer    # Ferramenta gráfica para configurar e gerenciar impressoras.
-  splix                    # Driver de impressão para impressoras Samsung e Xerox.
-  samsung-unified-driver   # Drivers unificados para diversas impressoras Samsung.
-  cups-pdf                 # Extensão do CUPS para criar PDFs via impressão.
-  bigocrpdf                # Converte documentos PDF em texto editável via OCR.
-  bluez-cups               # Permite impressão via Bluetooth usando o BlueZ.
-  paru                     # AUR helper para instalação de pacotes do Arch User Repository.
-  #nautilus                 # Gerenciador de arquivos do GNOME.
-  ecrire                   # Processador de texto leve.
-  gnome-disk-utility       # Utilitário gráfico para gerenciar discos e dispositivos de armazenamento.
-  # GVFS - Sistema de arquivos virtual
-  gvfs                      # Implementação do sistema de arquivos virtual para GIO
-  gvfs-afc                  # Backend para dispositivos móveis da Apple (AFC)
-  gvfs-dnssd                # Backend para DNS-SD e WebDAV (compartilhamento macOS)
-  gvfs-goa                  # Backend para Gnome Online Accounts (OwnCloud, etc.)
-  gvfs-google               # Backend para Google Drive
-  gvfs-gphoto2              # Backend para câmeras PTP e dispositivos MTP
-  gvfs-mtp                  # Backend para dispositivos MTP (Android, media players)
-  gvfs-nfs                  # Backend para NFS
-  gvfs-onedrive             # Backend para Microsoft OneDrive
-  gvfs-smb                  # Backend para compartilhamento de arquivos SMB/CIFS (Windows)
-  gvfs-wsdd                 # Backend para descoberta de serviços Web Services Dynamic Discovery (Windows)
-  conky                     # Light-weight system monitor for X, Wayland, and other things, too
-  conky-manager2            # GUI for managing Conky config files with options to browse and edit themes
-  plank                     # Elegant, simple, clean dock
-  # Office
-  libreoffice-fresh-pt-br # Portuguese (Brasil) language pack for LibreOffice Fresh
-  eog                     # Eye of Gnome: An image viewing and cataloging program
-  simplescreenrecorder    # A feature-rich screen recorder that supports X11 and OpenGL
-  mate-tweak              # Tweak tool for MATE (fork of MintDesktop)
-  adapta-gtk-theme        # An adaptive Gtk+ theme based on Material Design Guideline
-  arc-gtk-theme           # A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell
-  arc-icon-theme          # Arc icon theme. Official releases only
-  vlc                     # Multi-platform MPEG, VCD/DVD, and DivX player
-  # fontes
-  ttf-fira-mono
-  ttf-inconsolata           # Monospace font for pretty code listings and for the terminal
-  ttf-inconsolata-go-nerd   # Patched font Inconsolata Go from nerd fonts library
-  ttf-inconsolata-lgc-nerd  # Patched font Inconsolata LGC from nerd fonts library
-  ttf-inconsolata-nerd      # Patched font Inconsolata from nerd fonts library
-  ttf-inconsolata           # Monospace font for pretty code listings and for the terminal
-  ttf-inconsolata-go-nerd   # Patched font Inconsolata Go from nerd fonts library
-  ttf-inconsolata-lgc-nerd  # Patched font Inconsolata LGC from nerd fonts library
-  ttf-inconsolata-nerd      # Patched font Inconsolata from nerd fonts library
-  #drivers X
-  libxxf86vm              # X11 XFree86 video mode extension library
-  xf86-video-amdgpu       # X.org amdgpu video driver
-  xf86-video-ati          # X.org ati video driver
-  xf86-input-elographics  # X.org Elographics TouchScreen input driver
-  xf86-input-evdev        # X.org evdev input driver
-  xf86-input-libinput     # Generic input driver for the X.Org server based on libinput
-  xf86-input-synaptics    # Synaptics driver for notebook touchpads
-  xf86-input-vmmouse      # X.org VMWare Mouse input driver
-  xf86-input-void         # X.org void input driver
-  xf86-input-wacom        # X.Org Wacom tablet driver
-  xf86-video-dummy        # X.org dummy video driver
-  xf86-video-fbdev        # X.org framebuffer video driver
-  xf86-video-intel        # X.org Intel i810/i830/i915/945G/G965+ video drivers
-  xf86-video-nouveau      # Open Source 3D acceleration driver for nVidia cards
-  xf86-video-qxl          # Xorg X11 qxl video driver
-  xf86-video-sisusb       # X.org SiS USB video driver
-  xf86-video-vesa         # X.org vesa video driver
-  xf86-video-vmware       # X.org vmware video driver
-  xf86-video-voodoo       # X.org 3dfx Voodoo1/Voodoo2 2D video driver
-  lib32-libxxf86vm        # X11 XFree86 video mode extension library (32-bit)
-  xf86-video-sis          # X.org SiS video driver
-  #Packages-Live
-  gparted                 # A Partition Magic clone, frontend to GNU Parted
-  nbd                     # tools for network block devices, allowing you to use remote block devices over TCP/IP
-  mkinitcpio-nfs-utils
-  biglinux-grub-restore
-  memtest86+
-  memtest86+-efi
-  #Packages-Desktop
-  noto-fonts-emoji
-  ttf-droid
-  ttf-inconsolata
-  ttf-indic-otf
-  ttf-liberation
-  adobe-source-han-sans-cn-fonts
-  adobe-source-han-sans-jp-fonts
-  adobe-source-han-sans-kr-fonts
-  adobe-source-sans-pro-fonts
-  cantarell-fonts
-  noto-fonts-lite
-  noto-nerd-fonts-lite
-  ttf-roboto
-  ttf-roboto-mono
-  ttf-roboto-slab
+	gnome-extra
+	capitaine-cursors
+	beauty-icon-theme
+	# Xorg
+	xorg-server   # Servidor X11
+	xorg-xinit    # Inicialização do Xorg
+	xorg-xrandr   # Configuração de resolução e monitores
+	xorg-xsetroot # Permite definir o papel de parede no Xorg
+	xorg-xrdb     # Banco de dados de recursos do X
+	# Wayland
+	wlroots       # Biblioteca para composição no Wayland
+	xorg-xwayland # Suporte para aplicativos X11 no Wayland
+	wayland       # Protocolo Wayland
+	wayland-utils # Ferramentas para Wayland
+	wlr-randr     # Alternativa ao xrandr para Wayland
+	# Aplicativos essenciais
+	xfce4-terminal # Terminal alternativo baseado no XFCE
+	xterm          # Terminal padrão do Xorg
+	# Gerenciamento de hardware e energia
+	acpid   # Gerenciamento de eventos de energia
+	bluez   # Suporte a Bluetooth
+	blueman # Gerenciador de Bluetooth
+	fprintd # Suporte a leitores de impressão digital
+	geoclue # Serviço de geolocalização
+	# Extras para integração e personalização
+	packagekit # Integração com gerenciadores de pacotes
+	networkmanager
+	modemmanager           # Mobile broadband modem management service
+	network-manager-applet # Ícone de gerenciamento de rede
+	# Áudio
+	pavucontrol    # Controle de volume para PulseAudio
+	pipewire       # Alternativa moderna ao PulseAudio para áudio
+	wireplumber    # Gerenciador de sessão para PipeWire
+	pipewire-pulse # Low-latency audio/video router and processor - PulseAudio replacement
+	pipewire-alsa  # Low-latency audio/video router and processor - ALSA configuration
+	pipewire-jack  # Low-latency audio/video router and processor - JACK replacement
+	# Interface gráfica e login
+	lxdm    # Gerenciador de login leve e rápido, usado principalmente no LXDE.
+	lightdm # Gerenciador de login leve
+	lightdm-slick-greeter
+	lightdm-settings
+	lightdm-gtk-greeter # Interface gráfica para LightDM
+	sddm                # Gerenciador de login moderno, compatível com Wayland
+	gdm                 # Display manager and login screen
+	# Extras para Wayland
+	waybar  # Barra de status alternativa para Wayland
+	firefox # Navegador web popular e de código aberto, focado na privacidade e segurança.
+	# Pacotes da comunidade
+	auto-tweaks-browser   # Aplica ajustes automáticos ao navegador para otimizar seu desempenho e funcionalidade.
+	big-store             # Gerenciador de grandes volumes de dados.
+	bigcontrolcenter-base # Base para o Big Control Center, interface de gerenciamento do sistema.
+	chili-base-config
+	chili-webapps        # Integra aplicativos web ao ambiente de desktop.
+	chili-restore-config # Restaura configurações padrão de aplicativos de comunicação.
+	chili-utils
+	chili-install
+	chili-nano-config
+	bigbashview            # BigBashView is a python app to run Bash+HTML in a Desktop WebView
+	timeshift              # Ferramenta para criar snapshots incrementais do sistema.
+	grub-btrfs-timeshift   # Integra o Timeshift ao GRUB em sistemas Btrfs.
+	grub-btrfs             # Permite que o GRUB reconheça snapshots do Btrfs.
+	cups                   # Sistema de impressão comum no Linux.
+	cups-pdf               # Extensão do CUPS para criar PDFs via impressão.
+	system-config-printer  # Ferramenta gráfica para configurar e gerenciar impressoras.
+	splix                  # Driver de impressão para impressoras Samsung e Xerox.
+	samsung-unified-driver # Drivers unificados para diversas impressoras Samsung.
+	bigocrpdf              # Converte documentos PDF em texto editável via OCR.
+	bluez-cups             # Permite impressão via Bluetooth usando o BlueZ.
+	paru                   # AUR helper para instalação de pacotes do Arch User Repository.
+	#nautilus                 # Gerenciador de arquivos do GNOME.
+	ecrire             # Processador de texto leve.
+	gnome-disk-utility # Utilitário gráfico para gerenciar discos e dispositivos de armazenamento.
+	# GVFS - Sistema de arquivos virtual
+	gvfs           # Implementação do sistema de arquivos virtual para GIO
+	gvfs-afc       # Backend para dispositivos móveis da Apple (AFC)
+	gvfs-dnssd     # Backend para DNS-SD e WebDAV (compartilhamento macOS)
+	gvfs-goa       # Backend para Gnome Online Accounts (OwnCloud, etc.)
+	gvfs-google    # Backend para Google Drive
+	gvfs-gphoto2   # Backend para câmeras PTP e dispositivos MTP
+	gvfs-mtp       # Backend para dispositivos MTP (Android, media players)
+	gvfs-nfs       # Backend para NFS
+	gvfs-onedrive  # Backend para Microsoft OneDrive
+	gvfs-smb       # Backend para compartilhamento de arquivos SMB/CIFS (Windows)
+	gvfs-wsdd      # Backend para descoberta de serviços Web Services Dynamic Discovery (Windows)
+	conky          # Light-weight system monitor for X, Wayland, and other things, too
+	conky-manager2 # GUI for managing Conky config files with options to browse and edit themes
+	plank          # Elegant, simple, clean dock
+	# Office
+	libreoffice-fresh-pt-br # Portuguese (Brasil) language pack for LibreOffice Fresh
+	eog                     # Eye of Gnome: An image viewing and cataloging program
+	simplescreenrecorder    # A feature-rich screen recorder that supports X11 and OpenGL
+	adapta-gtk-theme        # An adaptive Gtk+ theme based on Material Design Guideline
+	arc-gtk-theme           # A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell
+	arc-icon-theme          # Arc icon theme. Official releases only
+	vlc                     # Multi-platform MPEG, VCD/DVD, and DivX player
+	# fontes
+	ttf-fira-mono
+	ttf-inconsolata          # Monospace font for pretty code listings and for the terminal
+	ttf-inconsolata-go-nerd  # Patched font Inconsolata Go from nerd fonts library
+	ttf-inconsolata-lgc-nerd # Patched font Inconsolata LGC from nerd fonts library
+	ttf-inconsolata-nerd     # Patched font Inconsolata from nerd fonts library
+	ttf-inconsolata          # Monospace font for pretty code listings and for the terminal
+	ttf-inconsolata-go-nerd  # Patched font Inconsolata Go from nerd fonts library
+	ttf-inconsolata-lgc-nerd # Patched font Inconsolata LGC from nerd fonts library
+	ttf-inconsolata-nerd     # Patched font Inconsolata from nerd fonts library
+	noto-fonts-emoji
+	ttf-droid
+	ttf-indic-otf
+	ttf-liberation
+	adobe-source-han-sans-cn-fonts
+	adobe-source-han-sans-jp-fonts
+	adobe-source-han-sans-kr-fonts
+	adobe-source-sans-pro-fonts
+	cantarell-fonts
+	noto-fonts-lite
+	noto-nerd-fonts-lite
+	ttf-roboto
+	ttf-roboto-mono
+	ttf-roboto-slab
+	#drivers X
+	libxxf86vm              # X11 XFree86 video mode extension library
+	xf86-video-amdgpu       # X.org amdgpu video driver
+	xf86-video-ati          # X.org ati video driver
+	xf86-input-elographics  # X.org Elographics TouchScreen input driver
+	xf86-input-evdev        # X.org evdev input driver
+	xf86-input-libinput     # Generic input driver for the X.Org server based on libinput
+	xf86-input-synaptics    # Synaptics driver for notebook touchpads
+	xf86-input-vmmouse      # X.org VMWare Mouse input driver
+	xf86-input-void         # X.org void input driver
+	xf86-input-wacom        # X.Org Wacom tablet driver
+	xf86-video-dummy        # X.org dummy video driver
+	xf86-video-fbdev        # X.org framebuffer video driver
+	xf86-video-intel        # X.org Intel i810/i830/i915/945G/G965+ video drivers
+	xf86-video-nouveau      # Open Source 3D acceleration driver for nVidia cards
+	xf86-video-qxl          # Xorg X11 qxl video driver
+	xf86-video-sisusb       # X.org SiS USB video driver
+	xf86-video-vesa         # X.org vesa video driver
+	xf86-video-vmware       # X.org vmware video driver
+	xf86-video-voodoo       # X.org 3dfx Voodoo1/Voodoo2 2D video driver
+	lib32-libxxf86vm        # X11 XFree86 video mode extension library (32-bit)
+	xf86-video-sis          # X.org SiS video driver
+	#Packages-Live
+	gparted                 # A Partition Magic clone, frontend to GNU Parted
+	nbd                     # tools for network block devices, allowing you to use remote block devices over TCP/IP
+	mkinitcpio              # Modular initramfs image creation utility
+	mkinitcpio-nfs-utils    # ipconfig and nfsmount tools for NFS root support in mkinitcpio
+	biglinux-grub-restore   # Restore your installed system
+	memtest86+              # Advanced memory diagnostic tool legacy BIOS version
+	memtest86+-efi          # Advanced memory diagnostic tool EFI version
+# GNOME Applications
+adw-gtk-theme
+baobab
+blueberry
+dconf-editor
+file-roller
+fragments
+gapless                   # Play your music elegantly (AKA: G4Music)
+gnome-bluetooth-3.0
+gnome-browser-connector
+gnome-calculator
+gnome-calendar
+gnome-characters
+gnome-clocks
+gnome-color-manager
+gnome-connections
+gnome-console
+gnome-contacts
+gnome-control-center
+gnome-disk-utility
+gnome-font-viewer
+gnome-keyring
+gnome-menus
+gnome-network-displays
+gnome-online-accounts
+gnome-remote-desktop
+gnome-session
+gnome-system-monitor
+gnome-text-editor
+gnome-tweaks
+gnome-user-share
+gnome-video-effects
+gnome-weather
+loupe
+malcontent
+mutter
+nautilus
+nautilus-admin
+nautilus-empty-file
+nautilus-image-converter
+nautilus-share
+papers
+power-profiles-daemon
+python-nautilus
+rygel
+showtime
+simple-scan
+sync-gnome-theme-to-qt # Pacote Biglinux
+tracker3-miners
+xdg-user-dirs-gtk
+# Community extra config
+custom-tweaks
+# GNOME Shell Extensions
+gnome-shell-extension-arc-menu
+gnome-shell-extension-appindicator
+gnome-shell-extension-blur-my-shell
+gnome-shell-extension-dash-to-dock
+gnome-shell-extension-dash-to-panel
+gnome-shell-extension-gsconnect
+gnome-shell-extension-legacy-theme-auto-switcher
+gnome-shell-extension-pano
+gnome-shell-extensions
+# Input Devices
+xf86-input-elographics
+xf86-input-evdev
+xf86-input-synaptics
+xf86-input-vmmouse
+# Multilib
+lib32-libva-intel-driver
+lib32-mesa
+lib32-mesa-vdpau
+lib32-libva-vdpau-driver
+lib32-mesa-utils
+mesa
+lib32-fontconfig
+lib32-gettext
+lib32-glu
+lib32-lcms2
+lib32-libcups
+lib32-libice
+lib32-libjpeg6-turbo
+lib32-libjpeg6-turbo
+lib32-libltdl
+lib32-libpcap
+lib32-libpng12
+lib32-libpulse
+lib32-libxcomposite
+lib32-libxinerama
+lib32-libxrandr
+lib32-libxslt
+lib32-mpg123
+lib32-nss-mdns
+lib32-openal
+lib32-pipewire-jack
+lib32-sdl12-compat
+lib32-sdl2-compat
+lib32-v4l-utils
+# Network Tools
+modemmanager
+network-manager-disable-random-mac
+network-manager-prefer-ipv4-dns
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+nss-mdns # NSS support for mDNS (optdepend for avahi)
+ntp
+open-vm-tools
+openresolv
+openssh
+qemu-guest-agent
+sysctl-network
+usb_modeswitch
+# System Configuration
+python-pillow
+python-pip
+python-pyqt5
+appimagelauncher
+appmenu-gtk-module
+auto-tweaks-browser # Pacote Biglinux
+biglinux-mime
+biglinux-webapps
+bigocrpdf
+dmidecode # for inxi -m output
+espeak-ng
+gdm
+htop
+inxi
+libappindicator-gtk3
+orca
+p7zip  # 7Z format support
+perl-file-mimeinfo
+pipewire-biglinux-config
+powertop
+python-pysmbc # SMB browser support
+speech-dispatcher
+unarchiver  # RAR format support
+xdg-desktop-portal-gtk
+zensu
+# TTS rhvoice
+tts-biglinux
+rhvoice-voice-leticia-f123
+rhvoice-brazilian-portuguese-complementary-dict-biglinux
+rhvoice-voice-evgeniy-eng
+# System Utilities
+fwupd
+android-tools
+big-store
+biglinux-systemd-swap
+# biglinux-updates-tweaks
+bluez-cups
+compsize
+debtap-mod
+hplip
+ipp-usb
+manjaro-printer
+pamac-updates-menu
+pamac-flatpak-plugin
+qt5-quickcontrols2
+qt6-wayland
+rpmtoarch
+sane-airscan
+splix
+system-config-printer
+system-config-printer-jobs
+thermald
+virtualbox-guest-utils
+# Themes and Icons
+comm-shell-orchis
+bibata-cursor-theme
+breeze-icons
+gnome-themes-extra
+gtk-engine-murrine
+qadwaitadecorations-qt6
+qt6-svg
+bigicons-papient
+sassc # Para o Tema Orchis
+# Udev Rules
+adafruit-boards-udev
+allow-input-accelerometer-udev
+apple-superdrive-udev
+avrisp-udev
+bitbox-udev
+btchip-udev
+crazyflie-udev
+crazyradio-udev
+duckypad-udev
+game-devices-udev
+keepkey-udev
+mooltipass-udev
+nintendo-udev
+numworks-udev
+nx-udev
+onlykey-udev
+openrgb-udev-rules
+osc-udev-storage
+signal-hound-udev
+stadia-controller-udev
+trezor-udev
+usb-dirty-pages-udev
+usbasp-udev
+usbtinyisp-udev
+# Utilities
+comm-gnome-config
+comm-settings-gnome
+comm-wallpapers-gnome
+ds4-disable-led
+retroarch-tweaks
+# Virtualization
+bluez-utils
+sshfs  # remote filesystem browser
+# Xorg
+numlockx
+xorg-mkfontscale
+xorg-server
+xorg-twm
+xorg-xinit
+xorg-xkill
+# Wayland
+wayland-protocols
+wayland-utils
+# Miscellaneous
+libdnet
+gdk-pixbuf-xlib
+uriparser
+libmspack
+# Additional Packages
+fatresize
+gamemode
+grilo-plugins
+gvfs
+gvfs-afc
+gvfs-dnssd
+gvfs-goa
+gvfs-google
+gvfs-gphoto2
+gvfs-mtp
+gvfs-nfs
+gvfs-onedrive
+gvfs-smb
+gvfs-wsdd
+manjaro-settings-samba
+mtools
+mtpfs
+rustdesk-bin
+steam
+udiskie
 )
 
 # Automatically detect and use the correct install file
@@ -177,27 +418,27 @@ elif [ -e "pkgbuild.install" ]; then
 fi
 
 package() {
-  cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
-  # Instale todos os arquivos em /usr/share/${pkgname} no momento da criação do pacote:
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  printf "%s\n" "${optdepends[@]}" >"${pkgdir}/usr/share/${pkgname}/optdepends"
+	# Instale todos os arquivos em /usr/share/${pkgname} no momento da criação do pacote:
+	install -dm755 "${pkgdir}/usr/share/${pkgname}"
+	printf "%s\n" "${optdepends[@]}" >"${pkgdir}/usr/share/${pkgname}/optdepends"
 
-  # Copiar a estrutura de /etc, /usr e /opt para /usr/share/${pkgname}
-  local dirs=("usr" "etc" "opt")
-  for dir in "${dirs[@]}"; do
-    if [ -d "${srcdir}/${pkgname}/${dir}" ]; then
-      cp -a "${srcdir}/${pkgname}/${dir}" "${pkgdir}/usr/share/${pkgname}/"
-    fi
-  done
+	# Copiar a estrutura de /etc, /usr e /opt para /usr/share/${pkgname}
+	local dirs=("usr" "etc" "opt")
+	for dir in "${dirs[@]}"; do
+		if [ -d "${srcdir}/${pkgname}/${dir}" ]; then
+			cp -a "${srcdir}/${pkgname}/${dir}" "${pkgdir}/usr/share/${pkgname}/"
+		fi
+	done
 
-  # Install license file if present
-  if [ -f "LICENSE" ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  fi
+	# Install license file if present
+	if [ -f "LICENSE" ]; then
+		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	fi
 
-  # Install documentation if present
-  if [ -f "README.md" ]; then
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  fi
+	# Install documentation if present
+	if [ -f "README.md" ]; then
+		install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	fi
 }
