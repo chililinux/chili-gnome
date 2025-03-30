@@ -182,14 +182,14 @@ post_install() {
 		return 0
 	}
 
-	#	msg "Please wait, synchronizing databases..."
-	#	synchronizing_database
+  msg "Please wait, synchronizing databases..."
+  synchronizing_database
 
 	msg "Installing common packages: ${COMMON_PACKAGES[*]}"
 	install_packages "${COMMON_PACKAGES[@]}"
 
-	#	msg "Checking for the existence of packages..."
-	#	sh_check_package_exist
+  msg "Checking for the existence of packages..."
+  sh_check_package_exist
 
 	msg "Installing optdepends packages: ${OPTDEPENDS[*]}"
 	install_packages "${OPTDEPENDS[@]}"
