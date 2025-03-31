@@ -38,7 +38,7 @@ declare servicesToDisable=(lxdm sddm gdm)
 
 msg() {
 	local msg="$1"
-	echo -e "${green}==>[${pkgname}] ${bold}${yellow}${msg}${reset}" >&2
+	echo -e "${blue}==>{$green}[${pkgname}] ${bold}${cyan}${msg}${reset}" >&2
 }
 
 log_ok() { echo -e "  ${TICK} ${*}${reset}"; }
