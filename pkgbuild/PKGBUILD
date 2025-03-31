@@ -114,10 +114,6 @@ optdepends=(
 	ttf-inconsolata-go-nerd  # Patched font Inconsolata Go from nerd fonts library
 	ttf-inconsolata-lgc-nerd # Patched font Inconsolata LGC from nerd fonts library
 	ttf-inconsolata-nerd     # Patched font Inconsolata from nerd fonts library
-	ttf-inconsolata          # Monospace font for pretty code listings and for the terminal
-	ttf-inconsolata-go-nerd  # Patched font Inconsolata Go from nerd fonts library
-	ttf-inconsolata-lgc-nerd # Patched font Inconsolata LGC from nerd fonts library
-	ttf-inconsolata-nerd     # Patched font Inconsolata from nerd fonts library
 	noto-fonts-emoji
 	ttf-droid
 	ttf-indic-otf
