@@ -350,5 +350,3 @@ post_upgrade() {
 	IS_UPGRADE=true
 	post_install
 }
-
-post_upgrade
