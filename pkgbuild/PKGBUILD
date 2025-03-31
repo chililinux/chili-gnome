@@ -54,13 +54,13 @@ optdepends=(
 	cantarell-fonts                                          # Humanist sans serif font
 	capitaine-cursors                                        # An x-cursor theme inspired by macOS and based on KDE Breeze
 	chili-base-config                                        # Package configuration BASE/SERVER
+	chili-skel                                               # User configuration for ChiliLinux
 	chili-install                                            # Instalador TUI guiado/automatizado para Linux
 	chili-nano-config                                        # Custom nano configuration for ChiliLinux
 	chili-restore-config                                     # Central de controle para restaurar configurações de ambiente e aplicativos
 	chili-utils                                              # Pacote de utilitários para GNU/Linux
 	chili-webapps                                            # Installs and removes WebApps
-	comm-gnome-config                                        # Package configuration Desktop Gnome
-	comm-settings-gnome                                      # Essential package to Community GNOME session
+  chili-gnome-config                                       # Package configuration Desktop Gnome
 	comm-shell-orchis                                        # Orchis Shell Theme Suite for BigCommunity
 	comm-wallpapers-gnome                                    # set of wallpapers for Gnome
 	compsize                                                 # Calculate compression ratio of a set of files on Btrfs
