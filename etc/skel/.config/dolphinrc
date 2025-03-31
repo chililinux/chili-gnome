@@ -1,0 +1,35 @@
+[Desktop Entry]
+DefaultProfile=Bash.profile
+
+[General]
+BrowseThroughArchives=true
+RememberOpenedTabs=false
+ShowToolTips=true
+Version=202
+ViewPropsTimestamp=2024,5,18,19,12,53.429
+
+[InformationPanel]
+showHovered=false
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=16
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=16
+
+[PlacesPanel]
+IconSize=16
+
+[PreviewSettings]
+Plugins=appimagethumbnail,cursorthumbnail,fontthumbnail,ffmpegthumbs,audiothumbnail,djvuthumbnail,blenderthumbnail,mobithumbnail,gsthumbnail,rawthumbnail,comicbookthumbnail,opendocumentthumbnail,kraorathumbnail,ebookthumbnail,windowsexethumbnail,imagethumbnail,windowsimagethumbnail,exrthumbnail,jpegthumbnail,svgthumbnail,directorythumbnail
+
+[Toolbar mainToolBar]
+IconSize=16
+
+[VersionControl]
+enabledPlugins=Git
