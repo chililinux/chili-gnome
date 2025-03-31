@@ -14,6 +14,24 @@ export blue="\033[1;34m"
 export magenta="\033[1;35m"
 export cyan="\033[1;36m"
 export white="\033[1;37m"
+export bold="\033[1m"
+export reset="\033[0m"
+export normal_black="\033[0;30m"
+export normal_red="\033[0;31m"
+export normal_green="\033[0;32m"
+export normal_yellow="\033[0;33m"
+export normal_blue="\033[0;34m"
+export normal_magenta="\033[0;35m"
+export normal_cyan="\033[0;36m"
+export normal_white="\033[0;37m"
+export bright_black="\033[1;90m"
+export bright_red="\033[1;91m"
+export bright_green="\033[1;92m"
+export bright_yellow="\033[1;93m"
+export bright_blue="\033[1;94m"
+export bright_magenta="\033[1;95m"
+export bright_cyan="\033[1;96m"
+export bright_white="\033[1;97m"
 #
 export COL_NC='\e[0m' # No Color
 export COL_LIGHT_GREEN='\e[1;32m'
@@ -24,10 +42,7 @@ export INFO="[i]"
 export DONE="${COL_LIGHT_GREEN} done!${COL_NC}"
 export OVER="\\r\\033[K"
 export DOTPREFIX="  ${black}::${reset} "
-
-# Setting variables for bold and reset
-export bold="\033[1m"
-export reset="\033[0m"
+#
 declare IS_UPGRADE=false
 declare IS_DBLOCK=false
 declare DM='lightdm'
@@ -38,7 +53,7 @@ declare servicesToDisable=(lxdm sddm gdm)
 
 msg() {
 	local msg="$1"
-	echo -e "${blue}==>{$green}[${pkgname}] ${bold}${cyan}${msg}${reset}" >&2
+	echo -e "${blue}==>${black}[${pkgname}] ${bright_cyan}${msg}${reset}" >&2
 }
 
 log_ok() { echo -e "  ${TICK} ${*}${reset}"; }
@@ -185,13 +200,15 @@ post_install() {
   msg "Please wait, synchronizing databases..."
   synchronizing_database
 
-	msg "Installing common packages: ${COMMON_PACKAGES[*]}"
+#	msg "Installing common packages: ${COMMON_PACKAGES[*]}"
+  msg "Installing common packages..."
 	install_packages "${COMMON_PACKAGES[@]}"
 
   msg "Checking for the existence of packages..."
   sh_check_package_exist
 
-	msg "Installing optdepends packages: ${OPTDEPENDS[*]}"
+#	msg "Installing optdepends packages: ${OPTDEPENDS[*]}"
+	msg "Installing optdepends packages..."
 	install_packages "${OPTDEPENDS[@]}"
 
 	msg "Detecting GPU and installing appropriate drivers..."
@@ -232,7 +249,7 @@ post_install() {
 		msg "Creating ${DM^} user..."
 		useradd -r -s /usr/bin/nologin -M -d /var/lib/${DM} ${DM} &>/dev/null
 	else
-		msg "${DM^} user already exists, skipping creation."
+		msg "${yellow}${DM^} user already exists, skipping creation."
 	fi
 
 	msg "Setting up ${DM^} directory..."
@@ -278,14 +295,14 @@ post_install() {
 				msg "${red}Error: It went wrong when desactivating service ${service}"
 			fi
 		else
-			msg "${green}Service ${service} is already inactive..."
+			msg "${yellow}Service ${service} is already inactive..."
 			continue
 		fi
 	done
 
 	for service in "${servicesToEnable[@]}"; do
 		if systemctl is-active --quiet "${service}"; then
-			msg "${green}Service ${service} is already active..."
+			msg "${yellow}Service ${service} is already active..."
 			continue
 		else
 			if ! systemctl enable "${service}" &>/dev/null; then
@@ -325,7 +342,7 @@ post_install() {
 		msg "Rebooting now..."
 		reboot
 	else
-		msg "Upgrade complete."
+		msg "${green}Upgrade complete."
 	fi
 }
 
@@ -333,3 +350,5 @@ post_upgrade() {
 	IS_UPGRADE=true
 	post_install
 }
+
+post_upgrade
